@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
 	"appid": "wxa3e5d0476923c317",
-	"projectname": "Gaodun",
+	"projectname": "myMiniProgram",
 	"author": "feng",
 	"condition": {
 		"search": {

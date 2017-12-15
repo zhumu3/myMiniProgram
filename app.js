@@ -3,7 +3,7 @@ const util = require('utils/util.js');
 App({
 
   globalData: {
-    baseURL:'https://t-mtiku.gaodun.com/',
+    baseURL:'https://mtiku.gaodun.com/',
     userInfo: null,
     isCheckDone: false,
     isDone:false,
