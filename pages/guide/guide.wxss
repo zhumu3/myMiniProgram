@@ -1,0 +1,13 @@
+page{
+  display: flex;
+  display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+padding:400rpx 0;
+
+}
+button{
+  margin-top: 200rpx;
+  width: 80%;
+}

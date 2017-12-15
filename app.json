@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/check/check",
+    "pages/mine/mine",
+    "pages/doExam/doExam",
+    "pages/rank/rank",
+    "pages/wrongAndFavo/wrongAndFavo",
+    "pages/report/report",
+    "pages/homework/homework",
+    "pages/live/live",
+    "pages/guide/guide",
+    "pages/auth/auth"    
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#EBEBEB",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#111111",
+    "onReachBottomDistance":0
+  },
+  "tabBar":{
+    "selectedColor": "#FFC164",
+    "color": "#4A4A4A",
+    "list":[{
+        "pagePath":"pages/index/index",
+        "text":"今日任务",
+        "iconPath":"assets/images/mission.png",
+        "selectedIconPath":"assets/images/mission2.png"
+    },{
+        "pagePath": "pages/mine/mine",
+        "text": "我",
+        "iconPath": "assets/images/mine.png",
+        "selectedIconPath": "assets/images/mine2.png"
+    }]
+  }
+}

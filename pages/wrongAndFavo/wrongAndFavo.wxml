@@ -1,0 +1,18 @@
+<view class="title">
+  <view class="{{type=='single'?'active':''}}" bindtap='selectType' data-head='single'>单选</view>
+  <view class="{{type=='multi'?'active':''}}" bindtap='selectType' data-head='multi'>多选</view>
+</view>
+<view class='content'>
+  <block wx:if="{{type=='single'}}">
+    <view class="list-item" wx:for="{{(myType=='wrong'?wrongSingleArr:favoSingleArr)}}" wx:key="{{inde}}" bindtap='jumpItem' data-id='{{item.item_id}}' data-type='{{myType}}'>
+      <view class='inner'>{{item.title}}</view>
+    </view>
+    <view wx:if="{{myType=='wrong'?(wrongSingleArr.length==0):(favoSingleArr.length==0)}}" class='noInfo'>无数据</view>
+  </block>
+  <block wx:elif="{{type=='multi'}}">
+    <view class="list-item" wx:for="{{myType=='wrong'?wrongMultiArr:favoMultiArr}}" wx:key="{{inde}}" bindtap='jumpItem' data-id='{{item.item_id}}' data-type='{{myType}}'>
+      <view class='inner'>{{item.title}}</view>
+    </view>
+    <view wx:if="{{myType=='wrong'?(wrongMultiArr.length==0):(favoMultiArr.length==0)}}" class='noInfo'>无数据</view>
+  </block>
+</view>

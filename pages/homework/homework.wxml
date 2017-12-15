@@ -1,0 +1,6 @@
+<view wx:for="{{workList}}" wx:key="{{do_date}}">
+  <view class='day'>{{item.month}}月{{item.day}}日</view>
+  <view wx:for="{{item.work_info}}" wx:for-item="i" wx:key="{{*this}}" class='item' bindtap="{{'jumpReport'}}" data-type="{{i.action_type}}" data-action="{{i.action_id}}" data-complete="{{i.is_complete}}" data-paperID="{{i.paper_id}}" data-liveurl="{{i.live_url}}">
+    <text class='tab'>{{i.action_type==1?'习题':i.action_type==2?'直播':'公开课'}}</text><text class='title'>{{i.work_title}}</text><image src="../../assets/images/yes.png" class="{{i.is_complete==1?'show':'hide'}}">yes</image>
+  </view>
+</view>

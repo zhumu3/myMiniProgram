@@ -1,0 +1,28 @@
+.check{
+  width: 100%;
+  height: 100%;
+}
+.section{
+  display: flex;
+  justify-content: center;
+  height: 500rpx;
+  align-items: center;
+}
+textarea{
+  width: 90%;
+  height: 400rpx;
+  box-shadow: 0 0 30rpx #eee;
+  border-radius: 10rpx;
+  padding:30rpx;
+  box-sizing:border-box;
+  background: white;
+}
+button{
+  color: white;
+  height: 80rpx;
+  width: 400rpx;
+  line-height: 80rpx;
+  border-radius: 50rpx;
+  background-color: #FFC164;
+  font-size: 30rpx;
+}

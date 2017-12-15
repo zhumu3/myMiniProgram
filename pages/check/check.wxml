@@ -1,0 +1,8 @@
+<form bindsubmit="formSubmit" >
+<view class="section">
+  <textarea name="input" placeholder="喊出我们的口号~" maxlength="50"></textarea>  
+</view>
+<view class="btn-area">
+    <button form-type="submit">打卡</button>
+  </view>
+</form>

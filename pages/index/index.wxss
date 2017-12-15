@@ -1,0 +1,238 @@
+/**index.wxss**/
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+}
+
+.phone{
+  position:fixed;
+  background-color:transparent;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  z-index:1000;
+  border:none;
+  border-radius: 0;
+    padding:0
+
+}
+.phone image{
+  width:100%;
+  height: 100%;
+}
+.wd{
+  z-index: 10;
+}
+
+.inner{
+  padding:50rpx 30rpx;
+  box-sizing:border-box;
+  overflow:hidden;
+  position: relative;
+  height: 100%;
+}
+.shortName{
+  max-width: 200rpx;
+}
+
+.b {
+  font-weight: 600;
+  color: black;
+}
+
+.info{
+  flex: 1
+}
+
+.info-word{
+  max-height:120rpx;
+  overflow:hidden;
+  width: 400rpx;
+  font-size:24rpx;
+}
+
+.userinfo-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.class {
+  width: 100%;
+}
+
+.swiper {
+  width: 90%;
+  border-radius:10rpx;
+  background: white;
+  box-shadow:0 0 10rpx #eee;
+  height: 300rpx;
+}
+
+.done{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.list .icon image{
+  width:50rpx;
+  height:60rpx;
+  margin:0;
+  border-radius: 0;
+}
+
+.done image{
+  width: 100%;
+  height: 100%;
+}
+.done view{
+  position:absolute;
+  right:10rpx;
+  top:10rpx;
+  color:white;
+  font-size:24rpx;
+}
+
+swiper-item {
+  padding: 50rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.swiper .title{
+  font-weight: 600;
+  font-size: 38rpx;
+}
+
+.swiper .content{
+  color: #999;
+}
+
+.Btn {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+
+.btn {
+  height: 80rpx;
+  border-radius: 40rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.btn-today {
+  width: 70%;
+  color: white;
+  background-color: #eee;
+  margin-right: 20rpx;
+  position: relative;
+}
+
+.btn-today-no{
+  background-color: #ffc164;
+}
+
+.word{
+  position: relative;
+  color: #333;
+  overflow:hidden;
+  border-radius:40rpx;
+}
+
+.jb{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  left:0;
+  height:40px;
+  background:#616161;
+  color:white;
+  text-align:center;
+  line-height:80rpx;
+  border-radius:0 0 10rpx 10rpx;
+  z-index:1;
+  opacity:.9;
+}
+
+.prog {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 193, 100, .5);
+  border-radius: 40rpx;
+  top:0rpx;
+}
+
+.btn-rank {
+  flex: 1;
+  color: #ffc164;
+  border: 1px solid #ffc164;
+}
+
+.activity {
+  margin-top: 30rpx;
+  box-shadow: 0 0 10px #eee;
+  width: 90%;
+  border-radius: 10rpx;
+  background: white;
+}
+
+.activity .title {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx;
+}
+
+.ac-left {
+  margin-right: 200rpx;
+  font-weight: 600;
+}
+
+.list-item {
+  display: flex;
+  justify-content: flex-start;
+  border-top: 1px solid #eee;
+  padding: 20rpx 30rpx;
+  align-items: center;
+}
+
+.list image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin: 30rpx;
+}
+
+.list .icon {
+  width: 50rpx;
+  text-align: center;
+  display:flex;
+  justify-content:center;
+}
+
+.ac-name {
+  font-size: 26rpx;
+}
+
+.ac-time {
+  color: #999;
+  font-size: 24rpx;
+}
+

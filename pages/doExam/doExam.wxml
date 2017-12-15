@@ -1,0 +1,111 @@
+<!-- 题目详情 -->
+<!-- 不是从报告页过来 -->
+<block wx:if="{{!isFromReport}}">
+  <!--头s  -->
+  <view class='head'>
+    <view class='timer'>
+      <icon type="waiting" size="15" color="#777" />
+      <text>{{runTimef}}</text>
+    </view>
+    <view class='favo' bindtap='favo' wx:for="{{examList}}" wx:key="{{*this}}" wx:if="{{nowIndex==index}}">
+      <image src="{{item.favorite==2?'../../assets/images/Star1.png':'../../assets/images/favo.png'}}"></image>
+      <text>收藏</text>
+    </view>
+    <view class='card' bindtap='showCard'>
+      <image src='../../assets/images/card.png'></image>
+      <text>答题卡</text>
+    </view>
+  </view>
+  <!-- 头e -->
+  <view class='list'>
+    <swiper current='{{nowIndex}}' style="height:{{clientHeight+'px'}}" bindchange='swiperChange'>
+      <swiper-item wx:for="{{examList}}" wx:key="{{*this}}">
+        <view class='listItem'>
+          <view class="count">
+            <text class='bold'>{{index+1}}</text>/{{examList.length}} {{item.type==1?'单选题':item.type==2?'多选题':'判断'}}</view>
+          <view class="content">
+            <view class='itemContent'>{{item.title}}</view>
+            <view wx:for="{{item.select}}" class="option {{i.selected?'down':''}}" wx:key="{{*this}}" wx:for-item="i" wx:for-index="ind" bindtap="{{item.type==1?'saveItem':'CheckBox'}}" data-ans="{{ind}}">
+              <text class='ABCD'>{{i.option}}</text>
+              <text class='info'>{{i.item_option}}</text>
+            </view>
+          </view>
+          <view wx:if="{{item.type==2}}" bindtap="{{item.type==2?'saveCheckBox':''}}" class='confirmBtn'>确定</view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='submitPaper' bindtap='submit' wx:if="{{nowIndex==(examList.length-1)}}">交卷</view>
+</block>
+<block wx:else>
+  <!-- 从报告页过来 -->
+  <swiper current='{{nowIndex}}' style="height:{{clientHeight+'px'}}" bindchange='swiperChange'>
+    <block wx:for="{{examList}}" wx:key="{{*this}}">
+      <view class='headRe'>
+        <view class='favo' bindtap='favo' wx:if="{{nowIndex==index}}">
+          <image src="{{item.favorite==2?'../../assets/images/Star1.png':'../../assets/images/favo.png'}}"></image>
+          <text>收藏</text>
+        </view>
+      </view>
+      <swiper-item>
+        <view class='listItem'>
+          <view class="count">
+            <text class='bold'>{{index+1}}</text>/{{examList.length}} {{item.type==1?'单选题':'多选题'}}</view>
+          <view class="content">
+            <view class='itemContent'>{{item.title}}</view>
+            <view wx:for="{{item.select}}" class="option  {{i.showTrue?'true':''}} {{i.showWrong?'wrong':''}}" wx:key="{{*this}}" wx:for-item="i" wx:for-index="ind" data-ans="{{(ind==0?'A':ind==1?'B':ind==2?'C':ind==3?'D':ind==4?'E':ind==5?'F':'G')}}">
+              <text class='ABCD'>{{i.option}}</text>
+              <text class='info'>{{i.item_option}}</text>
+            </view>
+          </view>
+          <view class='ans'>
+            <icon type="{{item.istrue==1?'success':'cancel'}}" size='20' wx:if="{{!isFromWroFav}}"></icon>
+            正确答案：
+            <text class='trueIcon'>{{item.yanswer}}</text>
+            <text wx:if="{{!isFromWroFav}}">  您的答案：{{item.userAnswer||'未作答'}}</text>
+          </view>
+          <view class='labels'>
+            <text wx:for="{{item.knowledge_point_tag}}" wx:for-item="it" class='label' wx:key="{{*this}}">{{it.title}}</text>
+          </view>
+          <view class='explain'>
+            解析：
+            <view>{{(isFromWroFav?item.analysis:item.answerAnalysis)||'无解析'}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</block>
+
+<!-- 题目详情 -->
+<!-- 答题卡 -->
+<view class="cardItem {{isCardShow?'show':''}}">
+  <view class="switch">
+    <view class="check {{isOrder?'active':''}}" bindtap='order' data-title='or'>按顺序</view>
+    <view class="homework {{isOrder?'':'active'}}" bindtap='order' data-title='cate'>按题型</view>
+  </view>
+  <text class='close' bindtap='hideCard'>关闭</text>
+  <view class="allList">
+    <view class="bt {{isOrder?'showLi':'hideLi'}}">
+      <view class="item {{nowIndex==index?'active':''}} {{item.isDone?'done':''}}" wx:for="{{examList}}" wx:key="{{*this}}" bindtap='jumpItem' data-ans='{{index+1}}'>
+        {{index+1}}
+      </view>
+    </view>
+    <view class="{{!isOrder?'showLi':'hideLi'}}">
+      <view class="tit">单选题</view>
+      <view class='body'>
+        <view class="item {{nowIndex==index?'active':''}} {{item.isDone?'done':''}}" wx:for="{{typeListSon1}}" wx:key="{{*this}}" bindtap='jumpItem' data-ans='{{index+1}}'>
+          {{index+1}}
+        </view>
+      </view>
+      <view class="tit">多选题</view>
+      <view class='body'>
+        <view class="item {{nowIndex==index+(typeListSon1.length)?'active':''}} {{item.isDone?'done':''}}" wx:for="{{typeListSon2}}" wx:key="{{*this}}" bindtap='jumpItem' data-ans='{{index+1+typeListSon1.length}}'>
+          {{index+1+typeListSon1.length}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='submitPaper' bindtap='submit' >交卷</view>
+</view>
+<!-- 答题卡 -->

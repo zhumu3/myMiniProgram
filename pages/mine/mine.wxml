@@ -1,0 +1,44 @@
+<view class=' top'>
+  <image src="{{globalData.userInfo.head_url||'../../assets/images/icon.png'}}"></image>
+  <view>{{globalData.userInfo.nickname||'yourName'}}</view>
+</view>
+<view class="flex box box-tb box-align-center body">
+  <swiper current="{{current}}">
+    <block wx:for="{{allMonth}}" wx:key="{{*this}}">
+      <swiper-item>
+        <view class="box-body pink-color box box-tb">
+          <view class="top-handle  box box-lr box-align-center box-pack-start">
+            <text class='fs36 b mr'>{{item.cur_month}}月</text>
+            <text class='fs32'>学习日历</text>
+          </view>
+          <view class="weeks box box-lr box-pack-center box-align-center">
+            <view class="flex week fs28" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+          </view>
+          <view class="days box box-lr box-wrap">
+            <view  class="grid white-color box box-align-center box-pack-center" wx:for="{{item.empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <view class="grid white-color box box-align-center box-pack-center" wx:for="{{item.days}}" wx:key="{{index}}" data-idx="{{index}}" wx:for-item="itemName">
+              <image src='../../assets/images/yes.png' class="{{itemName.homework_complete==1?'':'hide'}}"></image>
+              <view class="day border-radius {{(itemName.day==nowDay&&item.cur_month==cur_month) ? ' orange-bg' : ''}} box box-align-center box-pack-center {{itemName.sign_complete==1?'check':''}}">{{(itemName.day==nowDay&&item.cur_month==cur_month)?'今':itemName.day}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='box-body bottom'>
+    <view class='line-item' bindtap='navTo' data-type='wrong'>
+      <image src='../../assets/images/wrong.png'></image>
+      <text>我的错题</text> </view>
+    <view class='line-item' bindtap='navTo' data-type='favo'>
+      <image src='../../assets/images/star.png'></image>
+      <text>习题收藏</text> </view>
+    <view class='line-item' bindtap='navTo' data-type='work'>
+      <image src='../../assets/images/lesson.png'></image>
+      <text>往期作业</text> </view>
+  </view>
+</view>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='phone' wx:if="{{!globalData.hasPhone}}">
+  <image src='../../assets/images/click.png'></image>
+  </button>

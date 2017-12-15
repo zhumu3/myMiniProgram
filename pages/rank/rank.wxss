@@ -1,0 +1,98 @@
+view{
+  font-size: 30rpx;
+}
+.switch{
+  display: flex;
+  justify-content: center;
+  color: #4A4A4A;
+  padding: 20rpx 0;
+  background: #EBEBEB;
+}
+ .switch view.active{
+background:#4A4A4A;
+color:white;
+}
+
+.none{
+  display: flex;
+  height:120rpx;
+  justify-content:center;
+  align-items:center;
+}
+
+.mine{
+background: rgba(255, 193, 100, .1);
+}
+
+.check,.homework{
+  padding:5rpx 15rpx;
+}
+.check{
+  border: 1px solid #4A4A4A;
+  border-radius: 10rpx 0 0 10rpx;
+}
+.homework{
+  border: 1px solid #4A4A4A;
+  border-radius: 0 10rpx 10rpx 0;
+}
+.title{
+  display: flex;
+  justify-content: flex-start;
+  background: #EBEBEB;
+}
+.title view{
+  padding: 10rpx 20rpx;
+  margin: 0 20rpx;
+}
+.title view.active{
+  border-bottom: 6rpx solid #4A4A4A;
+}
+
+.list{
+  margin:20rpx 30rpx;
+background:white;
+border-radius:20rpx;
+box-shadow:0 0 15rpx #eee;
+}
+
+
+.list-item{
+display:flex;
+justify-content:flex-start;
+border-top: 1px solid #eee;
+padding: 0 30rpx;
+align-items: center;
+}
+.list-item:nth-of-type(1){
+  border-top: none;
+}
+.list image{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin: 30rpx;
+}
+.list .icon{
+  width: 50rpx;
+  text-align: center;
+  display:flex;
+  justify-content:center;
+}
+.list .icon image{
+  width:50rpx;
+  height:60rpx;
+  margin:0;
+  border-radius:0;
+}
+.ac-name{
+  font-size: 26rpx;
+}
+.ac-time{
+  color: #999;
+  font-size: 24rpx;
+}
+.info{
+  display:flex;
+  justify-content:space-between;
+  flex:1;
+}

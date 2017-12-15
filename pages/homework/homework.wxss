@@ -1,0 +1,36 @@
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+.day{
+  padding: 20rpx;
+  padding:20rpx 0 10rpx 40rpx;
+}
+.tab{
+  border: 1px solid #FFC164;
+  color: #FFC164;
+  margin: 20rpx 40rpx;
+  border-radius:25rpx;
+  width:100rpx;
+  text-align:center;
+}
+image{
+  width: 40rpx;
+  height: 32rpx;
+  float: right; 
+  margin-right:30rpx;
+}
+.item{
+  border-bottom: 1px solid #EBEBEB;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+}
+.title{
+  flex: 1;
+  height:42rpx;
+overflow:hidden;
+}

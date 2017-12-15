@@ -1,0 +1,83 @@
+page{
+  background: #F9F9F9;
+  padding:30rpx 40rpx 0;
+  box-sizing:border-box;
+}
+.box{
+  background:white;
+  border-radius:15rpx;
+  box-shadow:0 0 10rpx #e3e3e3;
+  padding:30rpx;
+  margin-bottom: 30rpx;
+}
+icon{
+  vertical-align: middle;
+}
+.head{
+  padding:30rpx;
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px dashed #EBEBEB;
+}
+.info{
+  display:flex;
+justify-content:space-around;
+align-items:center;
+padding: 20rpx 0;
+}
+.info .fen{
+  width: 33%;
+  border-right: 1px dashed #EBEBEB;
+  text-align: center;
+}
+.info .fen:nth-of-type(3){
+  border-right: none;
+}
+.ft{
+  padding-top: 20rpx;
+  font-size: 26rpx;
+}
+.b{
+  font-weight: 600;
+}
+.pr{
+  padding-right:30rpx;
+}
+.fw{
+  font-size:70rpx;
+}
+.orange{
+  color: #FFC164;
+}
+.btn{
+  background: #FFC164;
+  width: 300rpx;
+  height: 80rpx;
+  font-size: 34rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: white;
+  margin: 0 auto 30rpx;
+}
+.cardTit{
+  text-align: center;
+}
+.bt{
+  padding: 30rpx;
+}
+.bt .item{
+  width:70rpx;
+  height:70rpx;
+  border-radius:50%;
+  display:inline-block;
+  line-height:70rpx;
+  text-align: center;
+  margin: 10rpx;
+}
+.item.true{
+background: rgba(66, 203, 134, .2)
+}
+.item.false{
+background: rgba(246, 103, 121, .2)
+}

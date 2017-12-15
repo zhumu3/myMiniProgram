@@ -1,0 +1,91 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image  class="userinfo-avatar" src="{{globalData.userInfo.head_url||'../../assets/images/icon.png'}}" background-size="cover"></image>
+    <text class="userinfo-nickname">欢迎   <text class="b">{{globalData.userInfo.nickname||yourName}}</text> ，今天也要加油哦~</text>
+  </view>
+  <!-- 如果只有一个作业s -->
+  <block wx:if="{{workInfo.length<=1}}">
+  <view wx:if="{{!workInfo||workInfo.length==0}}">无作业</view>
+    <block wx:for="{{workInfo}}" wx:key="*this">
+      <view class='swiper'>
+        <view class='inner' bindtap="{{item.is_complete==1?'jumpReport':'todo'}}" data-type="{{item.action_type}}" data-action='{{item.action_id}}' data-iscom="{{item.is_complete}}" data-liveUrl='{{item.live_url}}'>
+          <view class='title'>{{item.work_title}}</view>
+          <view class='content'>{{item.sub_title}}</view>
+          <view class='done' wx:if="{{item.is_complete==1}}">
+            <image src='../../assets/images/done.png'></image>
+            <view>完成</view>
+          </view>
+          <view class='jb' wx:if="{{item.is_complete==1&&item.action_type==1}}"><text class='shortName'>{{globalData.userInfo.nickname}}</text>你的成绩击败了{{item.report.jb}}%的小伙伴哦！</view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <!-- 如果只有一个作业e  -->
+  <!-- 如果有一堆作业s -->
+  <block wx:else>
+    <swiper indicator-dots="true" interval="4000" duration="1000" class="swiper" bindchange="workChange" >
+      <block wx:for="{{workInfo}}" wx:key="*this">
+        <swiper-item bindtap="{{(item.is_complete==1&&item.action_type==1)?'jumpReport':'todo'}}" data-type="{{item.action_type}}"  data-action='{{item.action_id}}' data-isCom="{{item.is_complete}}" data-liveUrl='{{item.live_url}}'>
+          <view class='title'>{{item.work_title}}</view>
+          <view class='content'>{{item.sub_title}}</view>
+          <view class='done' wx:if="{{item.is_complete==1}}">
+            <image src='../../assets/images/done.png'></image>
+            <view>完成</view>
+          </view>
+        </swiper-item>
+         <view class='jb' wx:if="{{item.is_complete==1&&currentInd==index&&item.action_type==1}}"><text class='shortName'>{{globalData.userInfo.nickname}}</text>你的成绩击败了{{item.report.jb}}%的小伙伴哦！</view>
+      </block>
+    </swiper>
+  </block>
+  <!-- 如果有一堆作业e -->
+  <view class='Btn'>
+    <block wx:if="{{!globalData.isCheckDone}}">
+      <view class='btn btn-today btn-today-no' bindtap="goCheck">今日打卡</view>
+    </block>
+    <block wx:else>
+      <view class='btn btn-today'>
+        <view class='word'><text class='wd'>{{nowCheck}}/{{allCheck}}天</text>
+        <view class='prog' style="left:{{nowCheck*100/allCheck-100}}%"></view>
+        </view>
+      </view>
+    </block>
+    <view class="btn btn-rank" bindtap='goRank'>排行榜</view>
+  </view>
+  <view class="activity">
+    <view class="title">
+      <view class="ac-left">打卡动态</view>
+      <view class="">已有{{checkList.length}}人签到</view>
+    </view>
+    <view class="list">
+      <block wx:if="{{globalData.isDone}}">
+        <view class="list-item">
+          <view class="icon"></view>
+          <image src="{{globalData.userInfo.head_url||'../../assets/images/icon.png'}}"></image>
+          <view class="info">
+            <view class="ac-name">{{globalData.userInfo.nickname||'no-name'}}</view>
+            <view class="ac-time">{{globalData.checkInfo.time||'no-time'}}</view>
+            <view class='info-word'>{{globalData.checkInfo.info||'no-info'}}</view>
+          </view>
+        </view>
+      </block>
+      <block wx:for="{{checkList}}" wx:key="{{item.regdate}}">
+        <view class="list-item">
+          <view class="icon">
+            <image wx-if="{{index==0||index==1||index==2}}" src="{{index==0?'../../assets/images/first.png':index==1?'../../assets/images/second.png':index==2?'../../assets/images/third.png':''}}"></image>
+            <!-- <text wx-if="{{index>2}}">{{index+1}}</text> -->
+          </view>
+          <image src="{{item.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+          <view class="info">
+            <view class="ac-name">{{item.user_info.nickname||'no-name'}}</view>
+            <view class="ac-time">{{item.time||'no-time'}}</view>
+            <view class='info-word'>{{item.say||'no-info'}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='phone' wx:if="{{!globalData.hasPhone}}">
+  <image src='../../assets/images/click.png'></image>
+  </button>
+</view>

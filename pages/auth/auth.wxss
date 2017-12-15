@@ -1,0 +1,4 @@
+/* pages/auth/auth.wxss */
+image{
+  width: 100%;
+}

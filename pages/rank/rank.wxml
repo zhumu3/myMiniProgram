@@ -1,0 +1,135 @@
+<view class="switch">
+  <view class="check {{isCheck?'active':''}}" bindtap='check' data-title='check'>打卡排行</view>
+  <view class="homework {{isCheck?'':'active'}}" bindtap='check' data-title='homework'>作业排行</view>
+</view>
+<block wx:if="{{isCheck}}">
+  <view class="title">
+    <view class="{{isCheckToday?'active':''}}" bindtap='checkToday' data-head='today'>今日</view>
+    <view class="{{isCheckToday?'':'active'}}" bindtap='checkToday' data-head='all'>总榜</view>
+  </view>
+  <view class="list">
+    <block wx:if="{{isCheckToday}}">
+      <!-- 我的打卡s -->
+      <block wx:if='{{myCheckToday!=null&&myCheckToday.length!=0}}'>
+        <view class="list-item mine">
+          <view class="icon">
+            <text>{{myCheckToday.myself_rank_num}}</text>
+          </view>
+          <image src="{{myCheckToday.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+          <view class="info">
+            <view class="ac-name">{{myCheckToday.user_info.nickname||'no-name'}}</view>
+            <view class="ac-time">{{myCheckToday.checkTime||'no-time'}}</view>
+          </view>
+        </view>
+      </block>
+      <!-- 我的打卡e -->
+      <!-- 打卡列表s -->
+      <view wx:if="{{checkList.length==0}}" class='none'>啥都没呢</view>
+      <view class="list-item" wx:for="{{checkList}}" wx:key="{{item.regdate}}">
+        <view class="icon">
+          <image wx-if="{{index==0||index==1||index==2}}" src="{{index==0?'../../assets/images/first.png':index==1?'../../assets/images/second.png':index==2?'../../assets/images/third.png':''}}"></image>
+          <text wx-if="{{index>2}}">{{index+1}}</text>
+        </view>
+        <image src="{{item.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+        <view class="info">
+          <view class="ac-name">{{item.user_info.nickname||'no-name'}}</view>
+          <view class="ac-time">{{item.time||'no-time'}}</view>
+        </view>
+      </view>
+      <!-- 打卡列表e -->
+    </block>
+    <!-- 打卡总榜s -->
+    <block wx:else>
+      <block wx:if='{{myCheckAll!=null&&myCheckAll.length!=0}}'>
+        <view class="list-item mine">
+          <view class="icon">
+            <text>{{myCheckAll.myself_rank_num}}</text>
+          </view>
+          <image src="{{myCheckAll.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+          <view class="info">
+            <view class="ac-name">{{myCheckAll.user_info.nickname||'no-name'}}</view>
+            <view class="ac-time">{{myCheckAll.total||'no-time'}}</view>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{checkListAll.length==0}}" class='none'>啥都没呢</view>
+      
+      <view class="list-item" wx:for="{{checkListAll}}" wx:key="{{item.total}}">
+        <view class="icon">
+          <image wx-if="{{index==0||index==1||index==2}}" src="{{index==0?'../../assets/images/first.png':index==1?'../../assets/images/second.png':index==2?'../../assets/images/third.png':''}}"></image>
+          <text wx-if="{{index>2}}">{{index+1}}</text>
+        </view>
+        <image src="{{item.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+        <view class="info">
+          <view class="ac-name">{{item.user_info.nickname||'no-name'}}</view>
+          <view class="ac-time">{{item.total||'no-total'}}</view>
+        </view>
+      </view>
+    </block>
+    <!-- 打卡总榜e -->
+  </view>
+</block>
+<block wx:else>
+  <view class="title">
+    <view class="{{isHomeworkToday?'active':''}}" bindtap='homeworkToday' data-head='today'>今日</view>
+    <view class="{{isHomeworkToday?'':'active'}}" bindtap='homeworkToday' data-head='all'>总榜</view>
+  </view>
+  <view class="list">
+    <!-- 作业今日s -->
+    <block wx:if="{{isHomeworkToday}}">
+    <block wx:if='{{myHomeToday!=null&&myHomeToday.length!=0}}'>
+        <view class="list-item mine">
+          <view class="icon">
+            <text>{{myHomeToday.myself_rank_num}}</text>
+          </view>
+          <image src="{{myHomeToday.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+          <view class="info">
+            <view class="ac-name">{{myHomeToday.user_info.nickname||'no-name'}}</view>
+            <view class="ac-time">{{myHomeToday.total||'no-time'}}</view>
+          </view>
+        </view>
+      </block>
+      <view class="list-item" wx:for="{{homeworkList}}" wx:key="{{inde}}">
+        <view class="icon">
+          <image wx-if="{{index==0||index==1||index==2}}" src="{{index==0?'../../assets/images/first.png':index==1?'../../assets/images/second.png':index==2?'../../assets/images/third.png':''}}"></image>
+          <text wx-if="{{index>2}}">{{index+1}}</text>
+        </view>
+        <image src="{{item.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+        <view class="info">
+          <view class="ac-name">{{item.user_info.nickname||'no-name'}}</view>
+          <view class="ac-time">{{item.total||'no-total'}}</view>
+        </view>
+      </view>
+      <view wx:if="{{homeworkList.length==0}}" class='none'>啥都没呢</view>
+    </block>
+    <!-- 作业今日e -->
+    <!-- 作业总榜s -->
+    <block wx:else>
+    <block wx:if='{{myHomeAll!=null&&myHomeAll.length!=0}}'>
+        <view class="list-item mine">
+          <view class="icon">
+            <text>{{myHomeAll.myself_rank_num}}</text>
+          </view>
+          <image src="{{myHomeAll.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+          <view class="info">
+            <view class="ac-name">{{myHomeAll.user_info.nickname||'no-name'}}</view>
+            <view class="ac-time">{{myHomeAll.total||'no-time'}}</view>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{homeworkListAll.length==0}}" class='none'>啥都没呢</view>
+      
+      <view class="list-item" wx:for="{{homeworkListAll}}" wx:key="{{inde}}">
+         <view class="icon">
+          <image wx-if="{{index==0||index==1||index==2}}" src="{{index==0?'../../assets/images/first.png':index==1?'../../assets/images/second.png':index==2?'../../assets/images/third.png':''}}"></image>
+          <text wx-if="{{index>2}}">{{index+1}}</text>
+        </view>
+        <image src="{{item.user_info.head_url||'../../assets/images/icon.png'}}"></image>
+        <view class="info">
+          <view class="ac-name">{{item.user_info.nickname||'no-name'}}</view>
+          <view class="ac-time">{{item.total||'no-total'}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>

@@ -1,0 +1,2 @@
+  <view wx:if="{{getUserInfoFail}}">需要您的授权才能使用哦</view>
+  <button size='default' type='primary' wx:if="{{getUserInfoFail}}" bindtap='authorize'>立即授权</button>

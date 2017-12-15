@@ -1,0 +1,30 @@
+.title{
+  display: flex;
+  justify-content: flex-start;
+  background: #EBEBEB;
+}
+.title view{
+  padding: 10rpx 20rpx;
+  margin: 0 20rpx;
+}
+.title view.active{
+  border-bottom: 6rpx solid #333;
+}
+.list-item{
+  border-bottom: 1px solid #EBEBEB;
+  max-height: 100rpx;
+  padding: 30rpx;
+  
+}
+.inner{
+   text-overflow: -o-ellipsis-lastline;  
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+    display: -webkit-box;  
+    -webkit-line-clamp: 2;  
+    -webkit-box-orient: vertical; 
+}
+.noInfo{
+  text-align:center;
+  margin-top:50rpx;
+}
